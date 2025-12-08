@@ -59,7 +59,7 @@
 //   const city = document.getElementById("city-input").value;
 //   const apiKey = '61fedb86295845abbc7d05e7456eed26'
 //   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
-  
+
 
 //   try{
 //   const response = await fetch(url);
@@ -133,14 +133,14 @@
 //       cityElement.textContent = "City not found."; // Display an error message in the h1 element
 //       weatherCondition.textContent = ""
 //     }
-  
+
 import express from 'express';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(express.static("public"));
 
@@ -153,7 +153,7 @@ app.get('/weather', async (req, res) => {
   const city = req.query.city;
   const apiKey = process.env.API_KEY;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-  
+
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error('Could not fetch weather data');
