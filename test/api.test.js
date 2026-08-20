@@ -61,3 +61,11 @@ test('bundle returns 400 on bad params', async () => {
   await bundle({ query: {} }, res);
   assert.equal(res.statusCode, 400);
 });
+
+test('bundle returns 502 when all three upstream calls fail', async () => {
+  globalThis.fetch = async () => ({ ok: false, status: 500 });
+  const res = fakeRes();
+  await bundle({ query: { lat: '3.1', lon: '101.6' } }, res);
+  assert.equal(res.statusCode, 502);
+  assert.ok(res.body.error);
+});
