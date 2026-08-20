@@ -109,7 +109,7 @@ function fmtTime(unixSec, tzOffsetSec = 0) {
   return `${hh}:${mm}`;
 }
 function weekday(dateStr) {
-  return new Date(dateStr).toLocaleDateString(undefined, { weekday: 'short' });
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString(undefined, { weekday: 'short' });
 }
 function showToast(msg) {
   const t = el('toast');
