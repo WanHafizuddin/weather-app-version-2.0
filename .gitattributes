@@ -1,8 +1,8 @@
 # Ensure text files are diffed as text (emoji-containing markdown was being
 # auto-detected as binary by git). No end-of-line forcing to avoid churn.
-*.md   text
-*.css  text
-*.js   text
-*.json text
-*.html text
-*.mjs  text
+*.md   text -binary
+*.css  text -binary
+*.js   text -binary
+*.json text -binary
+*.html text -binary
+*.mjs  text -binary
