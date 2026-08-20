@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather</title>
+  <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="app">
+    <!-- Left: interactive map -->
+    <section class="map-panel">
+      <div class="map-title">🗺️ Click anywhere for weather</div>
+      <div id="map"></div>
+    </section>
+
+    <!-- Right: weather -->
+    <section class="weather-panel" id="weather-panel">
+      <div class="search-wrap">
+        <div class="search-row">
+          <input id="city-input" type="text" placeholder="Search any city…" autocomplete="off" />
+          <button id="locate-btn" title="Use my location" aria-label="Use my location">📍</button>
+          <button id="search-btn">Search</button>
+        </div>
+        <ul id="suggestions" class="suggestions" style="display:none"></ul>
+      </div>
+
+      <div class="units">
+        <button id="unit-c" class="active">°C</button>
+        <button id="unit-f">°F</button>
+      </div>
+
+      <div class="current">
+        <h1 id="city-name">—</h1>
+        <div id="weather-icon" class="wicon">🗺️</div>
+        <div id="temp-display" class="temp">--</div>
+        <div id="weather-desc" class="desc">Pick a city or click the map</div>
+        <div id="feels-like" class="feels"></div>
+      </div>
+
+      <div class="chips">
+        <div class="chip"><span class="k">Humidity</span><span id="humidity" class="v">–</span></div>
+        <div class="chip"><span class="k">Wind</span><span id="wind" class="v">–</span></div>
+        <div class="chip"><span class="k">Sunrise</span><span id="sunrise" class="v">–</span></div>
+        <div class="chip"><span class="k">Sunset</span><span id="sunset" class="v">–</span></div>
+        <div class="chip aqi"><span class="k">Air</span><span id="aqi-badge" class="badge" style="display:none"></span></div>
+      </div>
+
+      <div class="forecast">
+        <h3>Next 5 days</h3>
+        <div id="daily" class="daily"></div>
+        <h3>Hourly</h3>
+        <div id="hourly" class="hourly"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
